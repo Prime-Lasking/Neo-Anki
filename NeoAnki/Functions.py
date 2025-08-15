@@ -1,5 +1,29 @@
 import os
+def list_decks(deck_folder):
+    if not os.path.exists(deck_folder):
+        os.makedirs(deck_folder)
+    return [f[:-4] for f in os.listdir(deck_folder) if f.endswith(".txt")]
 
+def select_deck():
+    deck_folder = "Decks"
+    decks = list_decks(deck_folder)
+    print("\nAvailable Decks:")
+    for i, deck in enumerate(decks, 1):
+        print(f"{i}. {deck}")
+    print(f"{len(decks)+1}. Create new deck")
+
+    while True:
+        try:
+            choice = int(input("Select a deck: "))
+            if 1 <= choice <= len(decks):
+                return os.path.join(deck_folder, decks[choice - 1] + ".txt")
+            elif choice == len(decks) + 1:
+                new_deck = input("Enter new deck name: ").strip()
+                return os.path.join(deck_folder, new_deck + ".txt")
+            else:
+                print("Invalid choice.")
+        except ValueError:
+            print("Please enter a valid number.")
 def load_flashcards(path):
     if not os.path.exists(path):
         print("Warning: Flashcards file not found. Starting with an empty set.")
