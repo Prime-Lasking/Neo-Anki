@@ -2,13 +2,15 @@ import random
 import time
 from Functions import (
     load_flashcards, save_flashcards, fsrs_update,
-    format_flashcard, parse_flashcard, search_flashcards
+    format_flashcard, parse_flashcard, search_flashcards,
+    select_deck
 )
 
-full_file_path = "Stored Flashcards/Flashcards.txt"
-score_log_path = "Stored Flashcards/Challenge_Scores.txt"
+
+full_file_path = select_deck()
 flashcards = load_flashcards(full_file_path)
 
+# Main Menu
 print("\nFlashcard Menu:")
 print("1. Make new flashcards")
 print("2. Remove flashcard")
@@ -20,7 +22,7 @@ while True:
     try:
         user_choice = int(input("What is your choice (only enter number): "))
     except ValueError:
-        print("Invalid input. Please enter a number from 1 to 7.")
+        print("Invalid input. Please enter a number from 1 to 5.")
         continue
 
     if user_choice == 1:
@@ -68,12 +70,12 @@ while True:
     elif user_choice == 4:
         print("Shutting Down")
         for _ in range(3):
+            print(".")
             time.sleep(1)
-            print('.')
         break
 
     elif user_choice == 5:
-        keyword = input("Enter keyword to search: ")
+        keyword = input("Enter keyword to search: ").lower()
         matches = search_flashcards(flashcards, keyword)
         if matches:
             print(f"\nFound {len(matches)} matching flashcards:")
@@ -83,4 +85,4 @@ while True:
             print("No matches found.")
 
     else:
-        print("Invalid choice. Please enter a number from 1 to 7.")
+        print("Invalid choice. Please enter a number from 1 to 5.")
