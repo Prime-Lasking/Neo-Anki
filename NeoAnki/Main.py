@@ -3,10 +3,11 @@ import time
 from Functions import (
     load_flashcards, save_flashcards, fsrs_update,
     format_flashcard, parse_flashcard, search_flashcards,
-    select_deck
+    select_deck,print_Banner
 )
 
-
+# Banner
+print_Banner()
 full_file_path = select_deck()
 flashcards = load_flashcards(full_file_path)
 
@@ -86,3 +87,4 @@ while True:
 
     else:
         print("Invalid choice. Please enter a number from 1 to 5.")
+
