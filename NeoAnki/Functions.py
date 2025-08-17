@@ -65,3 +65,13 @@ def fsrs_update(stability, difficulty, rating):
 
 def search_flashcards(flashcards, keyword):
     return [fc for fc in flashcards if keyword.lower() in fc.lower()]
+def print_Banner():
+    banner = r"""
+███╗   ██╗███████╗ ██████╗  █████╗ ███╗   ██╗██╗  ██╗██╗
+████╗  ██║██╔════╝██╔═══██╗██╔══██╗████╗  ██║██║ ██╔╝██║
+██╔██╗ ██║█████╗  ██║   ██║███████║██╔██╗ ██║█████╔╝ ██║
+██║╚██╗██║██╔══╝  ██║   ██║██╔══██║██║╚██╗██║██╔═██╗ ██║
+██║ ╚████║███████╗╚██████╔╝██║  ██║██║ ╚████║██║  ██╗██║
+╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝
+"""
+    print(banner)
